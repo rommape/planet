@@ -57,8 +57,9 @@ class SitesControllerTest < ActionController::TestCase
   end
 
 	test "should increment site visits" do
-		assert_difference('@site.visits', 0) do
+		assert_difference '@site.visits' do
 			get :show, :id => @site.to_param
+			@site.reload
 		end
 	end
 end
