@@ -8,4 +8,14 @@ class TypeTest < ActiveSupport::TestCase
     assert type.errors[:name].any?
     assert type.errors[:description].any?
   end
+
+	test "Type name must be unique" do
+		type = types(:two)
+
+		type.name = "MyString"
+		assert type.invalid?
+
+		type.name = "MyOtherString"
+		assert type.valid?
+	end
 end

@@ -8,7 +8,9 @@ Planet::Application.routes.draw do
       resources :sites
   end
 
-  resources :sites
+  resources :sites do 
+		get 'search', :on => :collection
+	end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

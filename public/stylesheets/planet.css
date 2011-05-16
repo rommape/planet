@@ -80,7 +80,12 @@
 
 #banner img {
   float: left;
-  padding-left: 10px;
+  margin-left: 10px;
+}
+
+#banner form {
+	float: left;
+  margin-left: 10px;
 }
 
 #columns {

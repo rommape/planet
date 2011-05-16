@@ -36,4 +36,14 @@ class SiteTest < ActiveSupport::TestCase
     site.zoom = 1
     assert site.valid?
   end
+
+	test "Site name must be unique" do
+		site = sites(:two)
+
+		site.name = "MyString"
+		assert site.invalid?
+
+		site.name = "MyOtherString"
+		assert site.valid?
+	end
 end
