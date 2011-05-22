@@ -55,4 +55,11 @@ class SitesControllerTest < ActionController::TestCase
 
     assert_redirected_to sites_path
   end
+
+	test "should increment site visits" do
+		assert_difference '@site.visits' do
+			get :show, :id => @site.to_param
+			@site.reload
+		end
+	end
 end

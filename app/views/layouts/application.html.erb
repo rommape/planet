@@ -11,7 +11,11 @@
 </head> 
 <body id="planet"> 
   <div id="banner"> 
-    <%= image_tag("logo3.png") %>
+    <%= image_tag("logo3.png") %> <br/>
+		<%= form_tag(search_sites_path, :method => "get") do %>
+  		<%= text_field_tag(:q, nil, :placeholder => "Search sites") %>
+  		<%= submit_tag("Search") %>
+		<% end %>
     <%= @page_title || "Planet Travel Site" %><!-- <label id="code.depot.e.title"/> --> 
   </div> 
   <div id="columns"> 

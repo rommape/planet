@@ -10,7 +10,7 @@ one:
   image_url: MyString
 
 two:
-  name: MyString
+  name: MyOtherString
   description: MyText
   type_id: 1
   latitude: 9.99
