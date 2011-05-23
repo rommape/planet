@@ -8,4 +8,6 @@ class Site < ActiveRecord::Base
 
    # Prevents the assignation of sites to other users
    attr_protected :user_id
+
+	 has_many :comments
 end

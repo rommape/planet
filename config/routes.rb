@@ -1,5 +1,7 @@
 Planet::Application.routes.draw do
 
+  resources :comments
+
   devise_for :users
   resources :users
 
@@ -13,6 +15,10 @@ Planet::Application.routes.draw do
 
   resources :sites do 
 		get 'search', :on => :collection
+	end
+
+	resources :sites do
+		resources :comments
 	end
 
   # The priority is based upon order of creation:

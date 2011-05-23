@@ -1,0 +1,35 @@
+<div id="site_list"> 
+  <h1>Listing Comments: <%= @site %></h1> 
+ 
+  <table> 
+  <% @comments.each do |comment| %>
+    <tr class="<%= cycle('list_line_odd', 'list_line_even') %>"> 
+ 
+      <td class="list_description"> 
+        <dl>  
+          <dt><%= comment.comment %></dt> 
+					<dd><%= comment.user.name %></dd>
+					<% if @all %>
+						<dd><%= comment.site.name %></dd>
+					<% end %>
+        </dl> 
+      </td> 
+ 
+      <td class="list_actions"> 
+				<% if comment.user == current_user %>
+	        <%= link_to 'Edit', edit_site_comment_path(params[:site_id] = comment.site.id, params[:id] = comment.id) %><br/> 
+	        <%= link_to 'Destroy', comment_path(params[:id] = comment.id), 
+                    :confirm => 'Are you sure?',
+                    :method => :delete %>
+				<% end %>
+      </td> 
+    </tr> 
+  <% end %>
+  </table> 
+</div> 
+
+<br/>
+
+<% if !@all %>
+	<%= link_to 'New Comment', new_site_comment_path(params[:site_id]) %>
+<% end %>

@@ -1,0 +1,10 @@
+<h1>New comment</h1>
+
+<%= render 'form' %>
+
+<script type="text/javascript">
+	document.getElementById("comment_site_id").value = <%= params[:site_id] %>;
+	$(".hidden").hide();
+</script>
+
+<%= link_to 'Back', comments_path %>

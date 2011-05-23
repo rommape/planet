@@ -4,21 +4,46 @@
 
   <%= image_tag(@site.image_url, :class => 'site_image') %>
 
+	<script src="http://maps.google.com/maps/api/js?sensor=false">
+		// Carga la librería de Google Maps
+		// Doc de Google Maps API: http://code.google.com/apis/maps/documentation/javascript/
+	</script>
+	
+	<script type="text/javascript"> 
+		$(function() {
+			var lat = <%= @site.latitude %>;
+  		var lng = <%= @site.longitude %>;
+		  var zoom = <%= @site.zoom %>;
+			var thediv = document.getElementById('position');
+			thediv.innerHTML = '<span><b>Latitude: </b>' + lat + '</span><span><b> Longitude: </b>' + lng + '</span>';
+  
+		  var latlng = new google.maps.LatLng(lat,lng);
+  		var myOptions = {
+      	zoom: zoom,
+	      center: latlng,
+  	    mapTypeId: google.maps.MapTypeId.HYBRID};
+  		var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+			var marker = new google.maps.Marker({
+										position: latlng,
+										map: map,
+										title:'<%= @site.name %>'
+			});
+		});
+	</script> 
+	
+	<div id="map_canvas" style="width: 640px; height: 480px;"></div>
+	<div id="position"></div>
+
   <h3><%= @site.name %></h3> 
 
   <p><%=sanitize @site.description %></p>
 
-  <div class="position"> 
-    <span>
-      <b>Latitude:</b>
-      <%= @site.latitude %>
-    </span>
- 
-    <span>
-       <b>Longitude:</b>
-       <%= @site.longitude %>
-    </span>
-  </div> 
+	<% if !@site.comments.empty? %>
+	  <%= link_to 'Comments', site_comments_path(params[:site_id] = @site.id) %> |
+	<% end %>
+	<%= link_to 'Add a comment', new_site_comment_path(params[:site_id] = @site.id) %>
+
+	<p><b>Author:</b> <%= @site.user.name %></p>
 
   <div class="visits">
     <b>Visits:</b>
