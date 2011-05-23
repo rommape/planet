@@ -1,5 +1,5 @@
 class SitesController < ApplicationController
-  before_filter :authenticate_user!, :except => [ :index, :show ]
+  before_filter :authenticate_user!, :except => [ :index, :show, :search ]
 
   after_filter :count_visit, :only => :show
 

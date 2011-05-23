@@ -19,10 +19,15 @@
  
       <td class="list_actions"> 
         <%= link_to 'Show', site %><br/>
-        <%= link_to 'Edit', edit_site_path(site) %><br/>
-        <%= link_to 'Destroy', site, 
-                    :confirm => 'Are you sure?',
-                    :method => :delete %>
+				<% if site.user == current_user %>
+        	<%= link_to 'Edit', edit_site_path(site) %><br/>
+	        <%= link_to 'Destroy', site, 
+	                    :confirm => 'Are you sure?',
+	                    :method => :delete %>
+				<% end %>
+				<% if !site.comments.empty? %>				
+					<%= link_to 'Comments', site_comments_path(params[:site_id] = site.id) if site.comments %>
+				<% end %>
       </td> 
     </tr> 
   <% end %>
