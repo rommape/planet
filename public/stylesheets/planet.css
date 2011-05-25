@@ -90,8 +90,12 @@
 
 #banner .user {
 	float: right;
-	color: #bfb;
+	color: #fff;
 	font-size: small;
+}
+
+#banner a:visited {
+	color: #fff;
 }
 
 #columns {
