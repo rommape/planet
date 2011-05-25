@@ -32,3 +32,5 @@ gem 'devise'
 # group :development, :test do
 #   gem 'webrat'
 # end
+
+gem 'jquery-rails', '1.0.7'
