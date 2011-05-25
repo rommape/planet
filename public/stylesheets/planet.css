@@ -90,6 +90,7 @@
 
 #banner .user {
 	float: right;
+	padding-right: 10px;
 	color: #fff;
 	font-size: small;
 }
